@@ -88,10 +88,10 @@ class norm_syst_finder(nn.Module):
         self.nu_sigma = nu_sigma.reshape((-1, 1)).clone().detach().type(torch.double)
         self.to(device)
 
-    def LikEvidence(self, x):
-        return (self.nu-self.nu_ref)*torch.ones_like(x[:, 0:1]) # [N, 1]
+    def LikEvidence(self):#, x):
+        return (self.nu-self.nu_ref).squeeze()# [1,] #*torch.ones_like(x[:, 0:1]) # [N, 1]
         
-    def LikAux(self,):
+    def LikAux(self):
         return -0.5*((self.nu-self.nu_central)**2 - (self.nu_ref-self.nu_central)**2)/self.nu_sigma**2 # [1, 1]
     
     def is_trainable(self, bool):
@@ -187,7 +187,7 @@ class NP_GOF_sys(nn.Module):
             Laux += torch.sum(shape_aux) # [1, 1]
             
         if self.norm_syst_finder!=None:
-            norm_out = self.norm_syst_finder.LikEvidence(x[0]) # [N, 1]
+            norm_out = self.norm_syst_finder.LikEvidence()#x[0]) # [1,]
             Levid += norm_out # [N, 1]
             # update Laux
             Laux += self.norm_syst_finder.LikAux() # [1, 1]
@@ -199,8 +199,5 @@ class NP_GOF_sys(nn.Module):
         Laux= pred[1]
         y   = true[:, 0]
         w   = true[:, 1]
-        return torch.sum((1-y)*w*(torch.exp(f)-1) - y*w*(f)) - torch.sum(Laux) # [1, 1]
-
-            
-            
+        return torch.sum((1-y)*w*(torch.exp(f)-1) - y*w*(f)) - torch.sum(Laux) # [1, 1]    
         
