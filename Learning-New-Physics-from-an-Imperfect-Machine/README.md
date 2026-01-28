@@ -9,7 +9,7 @@ $$n(x|{\rm R}_{\nu_N,\nu_S})=n({\rm R_0})\exp[-xe^{-\nu_S}-\nu_S+\nu_N]$$
 ### Jupyter notebooks to learn interactively
 This folder contains two notebooks:
 - `Parametric_1Dtoy.ipynb` (STEP 1): shows how to learn the parametriation of shape effects on the distribution. This is the first step to run. The parametric model learnt in this notebook is used as input in the second step of the procedure.
-- `GOF_1Dtoy.ipynb` (STEP 2): implements the Neyman-Pearson goodness of fit (GOF) test with systematic uncertainties integrated by means of nuisance parameters.
+- `NPLM_1Dtoy.ipynb` (STEP 2): implements the Neyman-Pearson two-sample test with systematic uncertainties integrated by means of nuisance parameters.
 
 ### Python scripts to perform systematic tests
 In addition, this folder contains the python scripts to submit multiple toys on a cluster using SLURM:
