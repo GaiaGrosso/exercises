@@ -91,7 +91,7 @@ if __name__ == '__main__':
     parser.add_argument('-p','--pyscript', type=str, help="name of python script to execute", required=True)
     parser.add_argument('-l','--local',    type=int, help='if to be run locally',             required=False, default=0)
     parser.add_argument('-t', '--toys',    type=int, help="number of toys to be processed",   required=False, default=100)
-    parser.add_argument('-s', '--firstseed', type=int, help="first seed for toys (if specified the the toys are launched with deterministic seed incresing of one unit)", required=False, default=-1)
+    parser.add_argument('-s', '--firstseed', type=int, help="first seed for toys (if specified the toys are submitted with deterministic seed incresing of one unit)", required=False, default=-1)
     args     = parser.parse_args()
     ntoys    = args.toys
     pyscript = args.pyscript
