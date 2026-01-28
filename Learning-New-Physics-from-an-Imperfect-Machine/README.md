@@ -25,7 +25,7 @@ Arguments:
   - `--firstseed` [int] if given, the toys are launched with deterministic seed incresing of one unit starting from this value (random seeds are created otherwise);
   - `--local` [0/1] 1 to run locally, 0 to submit with SLURM.
 
-### Example of usage:
+#### Example of usage:
 ```
 python submit_toys_slurm_FASrc.py -p NPLM_1Dtoy.py -t 1 -s 1 -l 1
 ```
